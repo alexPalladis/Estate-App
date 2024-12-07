@@ -7,7 +7,7 @@ export default function Header() {
         <div className="container mx-auto flex justify-between items-center max-w-6xl p-4">
             <Link to='/' className="flex items-center space-x-2">
                 <h1 className='font-bold text-sm sm:text-xl flex flex-wrap'>
-                    <span className="text-2xl font-bold text-white">🏠RealEstate</span>
+                    <span className="text-2xl font-bold text-white">🏙️RealEstate</span>
                     <span className='text-2xl font-semibold text-slate-700'>App</span>
                 </h1>
             </Link>
