@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import {useSelector} from 'react-redux';
 
 export default function Header() {
-    const {currentUser} = useSelector(state => state.user);
+    const {currentUser} = useSelector((state) => state.user);
   return (
     <header className="bg-gradient-to-r from-sky-500 via-purple-500 to-indigo-500 shadow-md">
         <div className="container mx-auto flex justify-between items-center max-w-6xl p-4">
