@@ -87,7 +87,7 @@ export default function CreateListing() {
         (snapshot) => {
           const progress =
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          console.log(`Upload is ${progress}% done`);
+          
         },
         (error) => {
           reject(error);
@@ -298,7 +298,7 @@ export default function CreateListing() {
               <div className='flex flex-col items-center'>
                 <p>Regular price</p>
                 {formData.type === 'rent' && (
-                  <span className='text-xs'>($ / month)</span>
+                  <span className='text-xs'>(€ / month)</span>
                 )}
               </div>
             </div>
@@ -328,7 +328,7 @@ export default function CreateListing() {
           <p className='font-semibold'>
             Images:
             <span className='font-normal text-gray-600 ml-2'>
-              The first image will be the cover (max 6)
+              The first image will be the cover (max 6 images)
             </span>
           </p>
           <div className='flex gap-4'>
