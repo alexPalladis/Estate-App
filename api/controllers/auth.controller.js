@@ -25,11 +25,13 @@ export const signin = async (req,res,next) => {
         const validPassword = bcryptjs.compareSync(password,validUser.password);
         if(!validPassword) return next(errorHandler(401,'Invalid password!'));
         const token = jwt.sign({id: validUser._id},process.env.JWT_SECRET);
+        console.log('Generated Token:', token); // Add this lin
         const {password: pass,...rest} = validUser._doc;
         res
         .cookie('access_token',token,{httpOnly: true , secure:true,sameSite: 'None'})
         .status(200)
         .json(validUser);
+        console.log('Set-Cookie Called:', token); // Add this line
     } catch (error) {
         next(error);
     }
