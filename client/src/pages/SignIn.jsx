@@ -21,7 +21,7 @@ function SignIn() {
     e.preventDefault();
     try {
       dispatch(signInStart());
-      const res = await fetch(`${process.env.API_BASE_URL}/api/auth/signin`,{
+      const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/auth/signin`,{
       method:'POST',
       headers:{
         'Content-Type':'application/json'
@@ -34,7 +34,7 @@ function SignIn() {
       return;
     }
     dispatch(signInSuccess(data))
-    navigate(`${process.env.API_BASE_URL}/`);
+    navigate(`${import.meta.env.VITE_API_BASE_URL}/`);
     } catch (error) {
       dispatch(signInFailure(error.message))
     }
