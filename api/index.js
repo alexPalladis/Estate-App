@@ -26,14 +26,15 @@ const allowedOrigins = [
   // Configure CORS
   app.use(cors({
     origin: (origin, callback) => {
-      console.log('Incoming Origin:', origin); // Debugging: log incoming origin
+      
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true); // Allow the request
       } else {
         callback(new Error(`CORS Error: Origin ${origin} not allowed`)); 
       }
     },
-    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'], 
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
   }));
 
