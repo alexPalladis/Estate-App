@@ -34,7 +34,7 @@ function SignUp() {
     }
     setLoading(false);
     setError(null);
-    navigate(`${import.meta.env.VITE_API_BASE_URL}/sign-in`);
+    navigate('/sign-in');
     } catch (error) {
       setLoading(false);
       setError(error.message);

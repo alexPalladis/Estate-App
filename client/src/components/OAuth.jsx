@@ -21,7 +21,7 @@ export default function OAuth() {
             })
             const data = await res.json();
             dispatch(signInSuccess(data));
-            navigate(`${import.meta.env.VITE_API_BASE_URL}/`);
+            navigate('/');
         } catch (error) {
             console.log('Could not sign in with Google',error);
         }

@@ -13,7 +13,7 @@ export default function Header() {
         const urlParams = new URLSearchParams(window.location.search);
         urlParams.set('searchTerm', searchTerm);
         const searchQuery = urlParams.toString();
-        navigate(`${import.meta.env.VITE_API_BASE_URL}/search?${searchQuery}`);
+        navigate(`/search?${searchQuery}`);
       };
     
       useEffect(() => {

@@ -34,7 +34,7 @@ function SignIn() {
       return;
     }
     dispatch(signInSuccess(data))
-    navigate(`${import.meta.env.VITE_API_BASE_URL}/`);
+    navigate('/');
     } catch (error) {
       dispatch(signInFailure(error.message))
     }
