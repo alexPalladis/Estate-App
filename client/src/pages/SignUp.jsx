@@ -19,7 +19,7 @@ function SignUp() {
     e.preventDefault();
     try {
       setLoading(true);
-    const res = await fetch('/api/auth/signup',{
+    const res = await fetch(`${process.env.API_BASE_URL}/api/auth/signup`,{
       method:'POST',
       headers:{
         'Content-Type':'application/json'
@@ -34,7 +34,7 @@ function SignUp() {
     }
     setLoading(false);
     setError(null);
-    navigate('/sign-in');
+    navigate(`${process.env.API_BASE_URL}/sign-in`);
     } catch (error) {
       setLoading(false);
       setError(error.message);
