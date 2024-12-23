@@ -9,11 +9,6 @@ import cors from 'cors';
 
 dotenv.config();
 
-const allowedOrigins = [
-    'https://main.d2v5tsefsm99cr.amplifyapp.com/', // Production
-    'http://localhost:3000', // Local development
-  ];
-  
 mongoose.connect(process.env.MONGO).then(() => {
     console.log('Connected to MongoDB!')
 }).catch((err) => {
@@ -22,9 +17,16 @@ mongoose.connect(process.env.MONGO).then(() => {
 
 const app = express();
 
+const allowedOrigins = [
+    'https://main.d2v5tsefsm99cr.amplifyapp.com/', // Production
+    'http://localhost:3000', // Local development
+  ];
+  
+
 app.use(cors({
     origin: (origin, callback) => {
       // Allow requests with no origin (e.g., mobile apps, Postman)
+      console.log('Incoming origin:', origin); // Debugging: log the origin
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
