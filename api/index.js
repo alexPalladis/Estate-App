@@ -13,7 +13,7 @@ const allowedOrigins = [
     'https://main.d2v5tsefsm99cr.amplifyapp.com/', // Production
     'http://localhost:3000', // Local development
   ];
-
+  
 mongoose.connect(process.env.MONGO).then(() => {
     console.log('Connected to MongoDB!')
 }).catch((err) => {
@@ -21,10 +21,6 @@ mongoose.connect(process.env.MONGO).then(() => {
 });
 
 const app = express();
-
-app.use(express.json());
-
-app.use(cookieParser());
 
 app.use(cors({
     origin: (origin, callback) => {
@@ -42,6 +38,10 @@ app.use(cors({
 app.listen(process.env.PORT, () => {
     console.log(`Server is running on port ${process.env.PORT}`)
 });
+
+app.use(express.json());
+
+app.use(cookieParser());
 
 app.use('/api/user',userRouter);
 app.use('/api/auth',authRouter);
