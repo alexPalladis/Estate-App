@@ -1,11 +1,12 @@
 import express from 'express';
+import cors from 'cors';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import userRouter from './routes/user.route.js';
 import authRouter from './routes/auth.route.js';
 import cookieParser from 'cookie-parser';
 import listingRouter from './routes/listing.route.js';
-import cors from 'cors';
+
 
 dotenv.config();
 
@@ -18,23 +19,22 @@ mongoose.connect(process.env.MONGO).then(() => {
 const app = express();
 
 const allowedOrigins = [
-    'https://main.d2v5tsefsm99cr.amplifyapp.com/', // Production
+    'https://main.d2v5tsefsm99cr.amplifyapp.com', // Amplify frontend
     'http://localhost:3000', // Local development
   ];
   
-
-app.use(cors({
+  // Configure CORS
+  app.use(cors({
     origin: (origin, callback) => {
-      // Allow requests with no origin (e.g., mobile apps, Postman)
-      console.log('Incoming origin:', origin); // Debugging: log the origin
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
+      console.log('Incoming Origin:', origin); // Debugging: log incoming origin
+      if (allowedOrigins.includes(origin)) {
+        callback(null, true); // Allow the request
       } else {
-        callback(new Error('Not allowed by CORS'));
+        callback(new Error(`CORS Error: Origin ${origin} not allowed`)); 
       }
     },
-    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
-    credentials: true, // If using cookies or authorization headers
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'], 
+    credentials: true
   }));
 
 app.listen(process.env.PORT, () => {
