@@ -90,6 +90,7 @@ function Profile() {
       dispatch(deleteUserStart());
       const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/user/delete/${currentUser._id}`, {
         method: 'DELETE',
+        credentials:'include'
       });
       const data = await res.json();
       if (data.success === false) {
@@ -140,6 +141,7 @@ function Profile() {
     try {
       const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/listing/delete/${listingId}`, {
         method: 'DELETE',
+        credentials:'include'
       });
       const data = await res.json();
       if (data.success === false) {
