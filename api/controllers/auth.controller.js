@@ -65,7 +65,9 @@ export const google = async (req, res, next) => {
         .cookie('access_token', token, { httpOnly: true, secure:true,sameSite: 'none'  })
         .status(200)
         .json(rest);
+        console.log('Generated jwt: ',token)
     }
+    
   } catch (error) {
     next(error);
   }

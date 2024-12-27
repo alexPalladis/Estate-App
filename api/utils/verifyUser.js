@@ -4,6 +4,8 @@ import { errorHandler } from './error.js';
 export const verifyToken = (req, res, next) => {
   
   const token = req.cookies.access_token || req.headers.authorization?.split(' ')[1];;
+  console.log('Decoded user:', req.user);
+
   
   if (!token) {
     console.log('No token in cookies'); 
