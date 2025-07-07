@@ -21,6 +21,7 @@ const app = express();
 const allowedOrigins = [
     'https://main.d2v5tsefsm99cr.amplifyapp.com', // Amplify frontend
     'http://localhost:3000', // Local development
+    '*'
   ];
   
   // Configure CORS
