@@ -19,9 +19,9 @@ mongoose.connect(process.env.MONGO).then(() => {
 const app = express();
 
 const allowedOrigins = [
-    'https://main.d2v5tsefsm99cr.amplifyapp.com', // Amplify frontend
+    'https://estate-app-pied.vercel.app', // Vercel frontend
     'http://localhost:3000', // Local development
-    '*'
+
   ];
   
   // Configure CORS
